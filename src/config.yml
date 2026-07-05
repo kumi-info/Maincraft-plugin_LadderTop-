@@ -1,0 +1,35 @@
+# ======================= 頂上テレポート（LadderTop）設定 =======================
+# 使い方:  /laddertop                         … 実行者を頂上へTP（デフォルト高さ）
+#          /laddertop <Y>                     … 頂上の Y（絶対値）を指定してTP
+#          /laddertop <Y> <名前>              … 指定プレイヤーをTP
+#          /laddertop <Y> all                 … オンライン全員をTP
+#          /laddertop <Y> random              … ランダムな1人をTP
+#          /laddertop <名前|all|random>       … デフォルト高さで対象をTP（高さ省略）
+#          /laddertop reload                  … この config.yml を再読み込み
+#
+# 頂上の Y（デフォルト）= s2e-ladder の ladder.height + extra-height
+#   例) height=1000, extra-height=40 → 頂上 Y = 1040
+#   ※ start.y は加算しません（絶対 Y）。高さ引数を渡すとその値を絶対 Y として使います。
+#
+# 着地 X/Z は s2e-ladder の ladder.start の真上で「ブロック中央(floor+0.5)」へ自動スナップし、
+# ゴールの中央に着地します。端数で中央からズレる場合は下の center-*-offset で微調整できます。
+# 初期位置・ゴール高さは s2e-ladder の plugins/s2e-ladder/config.yml から自動取得します。
+# ==============================================================================
+
+# ゴール高さ(s2e の ladder.height)に加える余白ブロック数（着地用の上空マージン）。
+extra-height: 40
+
+# 着地座標の微調整（ブロック中央スナップ後に加算するオフセット）。
+# ゴールは 7×7 でスタートが端にあるため、中央へ寄せるよう X を -3 ブロックする。
+#   X = floor(start.x)+0.5 + center-x-offset = 627.5 - 3 = 624.5（ゴール中央）
+center-x-offset: -3.0
+center-z-offset: 0.0
+
+# テレポート時に対象プレイヤーへ表示するタイトル（サブタイトルなし）。
+#   main = 大きい文字。%y% は頂上の Y に置換。§x で色・装飾（§6金/§l太字 等）。
+#   *-ticks は 20 ticks = 1 秒。
+title:
+  main: '§6§l頂上テレポート'
+  fade-in-ticks: 10
+  stay-ticks: 50
+  fade-out-ticks: 20

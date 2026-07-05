@@ -1,0 +1,16 @@
+name: LadderTop
+version: '1.3.0'
+main: com.liverecord.laddertop.LadderTopPlugin
+api-version: '1.21'
+author: LiveRecord
+description: 's2e-ladder の頂上（ゴール上空）へテレポートする'
+softdepend: [s2e-ladder]
+commands:
+  laddertop:
+    description: 's2e-ladder の頂上へテレポート'
+    usage: '/laddertop [高さ] [プレイヤー名|all|random]'
+    aliases: [ltp]
+permissions:
+  laddertop.use:
+    description: 'laddertop の操作権限'
+    default: op
